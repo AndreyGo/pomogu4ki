@@ -3,7 +3,8 @@ program Pomogu4ki;
 uses
   Forms,
   uMain in 'pas\uMain.pas' {fmMain},
-  uFunctions in 'pas\uFunctions.pas';
+  uFunctions in 'pas\uFunctions.pas',
+  uTypes in 'pas\uTypes.pas';
 
 {$R *.res}
 

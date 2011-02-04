@@ -125,9 +125,6 @@ object fmMain: TfmMain
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ItemHeight = 29
-      Items.Strings = (
-        'Move by Alt'
-        'Minimize to tray')
       ParentFont = False
       TabOrder = 0
     end
