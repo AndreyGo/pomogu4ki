@@ -51,6 +51,7 @@
 				<Form>fmMain</Form>
 			</DCCReference>
 			<DCCReference Include="pas\uFunctions.pas"/>
+			<DCCReference Include="pas\uTypes.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
