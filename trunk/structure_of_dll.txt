@@ -1,0 +1,29 @@
+Каждая DLL должна иметь следующие обязательные экспортируемые функции:
+
+1. Функции для регистрации библиотеки, можно их просто оставить пустыми но они должны быть!
+	function DllRegisterServer: HResult; stdcall;
+	begin
+	  Result := ERROR_SUCCESS;
+	end;
+
+	function DllUnregisterServer: HResult; stdcall;
+	begin
+	  Result := ERROR_SUCCESS;
+	end;
+
+	function DllInstall( bInstall : BOOL; pszCmdLine : LPCWSTR ): HResult; stdcall;
+	begin
+	  Result := ERROR_SUCCESS;
+	end;
+
+2. Функция для получения информации о плагине. Тип описан в файле uTypes.pas
+	function DllInfo():TDllInfoStructure;
+	
+3. Старт раболты помогучки-вымогучки. Если код возвращения не равно "0" (ноль) значит произошла ошибка и надо вывести её на ружу
+   function DllStart():byte;
+   
+4. Остановка выполнения библиотеки. Возвращает код, если не равно "0" (ноль) значит ошибка и надо показать что за ошибка
+	function DllStop():byte   
+	
+5. Возвращает сообщение об ошибке по её коду
+	function DllGetErrorStr(code:byte):string;
