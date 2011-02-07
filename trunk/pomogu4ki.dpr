@@ -1,6 +1,7 @@
 program Pomogu4ki;
 
 uses
+  ShareMem,
   Forms,
   uMain in 'pas\uMain.pas' {fmMain},
   uFunctions in 'pas\uFunctions.pas',
