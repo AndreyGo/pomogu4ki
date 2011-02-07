@@ -14,6 +14,7 @@ object fmMain: TfmMain
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -25,6 +26,7 @@ object fmMain: TfmMain
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
+    Visible = False
     object edSearch: TEdit
       Left = 0
       Top = 0
@@ -53,7 +55,7 @@ object fmMain: TfmMain
       Top = 8
       Width = 75
       Height = 25
-      Action = acActivateDeActivate
+      Action = acActivateDeactivate
       TabOrder = 0
     end
     object btnDelete: TButton
@@ -78,12 +80,12 @@ object fmMain: TfmMain
       ParentFont = False
       TabOrder = 2
     end
-    object btnDesabledEnabled: TButton
+    object btnSettings: TButton
       Left = 5
       Top = 36
       Width = 75
       Height = 25
-      Action = acDisabledEnabled
+      Action = acSettings
       TabOrder = 3
     end
     object btnInstall: TButton
@@ -113,43 +115,60 @@ object fmMain: TfmMain
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 2
-    object lbListOfDll: TListBox
+    object lvDllList: TListView
       Left = 0
       Top = 0
       Width = 264
       Height = 284
       Align = alClient
-      Font.Charset = ANSI_CHARSET
+      Columns = <
+        item
+          Caption = #8470
+          Width = 35
+        end
+        item
+          Caption = 'NAME'
+          Width = 100
+        end
+        item
+          Caption = 'DESC'
+          Width = 125
+        end>
+      Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -24
+      Font.Height = -13
       Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ItemHeight = 29
+      Font.Style = []
+      GridLines = True
+      HideSelection = False
+      ReadOnly = True
+      RowSelect = True
       ParentFont = False
+      ParentShowHint = False
+      PopupMenu = pmLibraries
+      ShowWorkAreas = True
+      ShowHint = True
       TabOrder = 0
+      ViewStyle = vsReport
+      OnClick = lvDllListClick
+      OnSelectItem = lvDllListSelectItem
     end
   end
   object ActionList: TActionList
-    Left = 56
-    Top = 208
+    Left = 64
+    Top = 280
     object acExit: TAction
       Caption = 'Exit'
       OnExecute = acExitExecute
     end
-    object acActivateDeActivate: TAction
-      Caption = 'Activate'
-      Enabled = False
-    end
-    object acDisabledEnabled: TAction
-      Caption = 'Disabled'
-      Enabled = False
-    end
     object acDelete: TAction
       Caption = 'Delete'
       Enabled = False
+      OnExecute = acDeleteExecute
     end
     object acInstall: TAction
       Caption = 'Install ...'
+      OnExecute = acInstallExecute
     end
     object acHide: TAction
       Caption = 'Hide'
@@ -159,16 +178,30 @@ object fmMain: TfmMain
       Caption = 'Show'
       OnExecute = acShowExecute
     end
+    object acActivateDeactivate: TAction
+      Caption = 'Activate'
+      Enabled = False
+      OnExecute = acActivateDeactivateExecute
+    end
+    object acSettings: TAction
+      Caption = 'Settings ...'
+      Enabled = False
+      OnExecute = acSettingsExecute
+    end
+    object acShowDetail: TAction
+      Caption = 'Show detail'
+      OnExecute = acShowDetailExecute
+    end
   end
   object TrayIcon: TTrayIcon
     PopupMenu = pmTray
     OnClick = acShowExecute
-    Left = 8
-    Top = 208
+    Left = 16
+    Top = 280
   end
   object pmTray: TPopupMenu
-    Left = 104
-    Top = 208
+    Left = 112
+    Top = 280
     object Show1: TMenuItem
       Action = acShow
     end
@@ -183,7 +216,32 @@ object fmMain: TfmMain
     Enabled = False
     Interval = 5
     OnTimer = tmStartUpTimer
-    Left = 152
-    Top = 208
+    Left = 160
+    Top = 280
+  end
+  object odInstallDll: TOpenDialog
+    Filter = 'Dll Files|*.dll|Archive files|*.zip,*.rar|All files|*.*'
+    Title = 'Install dll'
+    Left = 216
+    Top = 280
+  end
+  object pmLibraries: TPopupMenu
+    Left = 112
+    Top = 240
+    object Activate1: TMenuItem
+      Action = acActivateDeactivate
+    end
+    object Delete1: TMenuItem
+      Action = acDelete
+    end
+    object Showdetail1: TMenuItem
+      Action = acShowDetail
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object Settings1: TMenuItem
+      Action = acSettings
+    end
   end
 end
