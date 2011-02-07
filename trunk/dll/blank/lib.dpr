@@ -22,7 +22,11 @@ Begin
    // Get DLL info
   with Result do
     Begin
-      DllName:= 'My Super Plagin!';
+      DllName:= 'Dll name';
+      DllDescription:= 'Description of dll';
+      DllExtension.Author:= 'Andrey_Go';
+      DllExtension.Blog:= 'http://pomogu4ki.blogspot.com/';
+      DllExtension.Email:= 'slashinin.andrrey@gmail.com';
       if GetModuleFileName(hInstance,@Buffer,SizeOf(Buffer)-1) > 0 then
          DllPath:= ExtractFilePath(StrPas(Buffer));
     End;

@@ -5,7 +5,9 @@ uses
   Forms,
   uMain in 'pas\uMain.pas' {fmMain},
   uFunctions in 'pas\uFunctions.pas',
-  uTypes in 'pas\uTypes.pas';
+  uTypes in 'pas\uTypes.pas',
+  uLibraries in 'pas\uLibraries.pas',
+  uErrorConst in 'pas\uErrorConst.pas';
 
 {$R *.res}
 
