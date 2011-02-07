@@ -3,8 +3,8 @@ unit uMain;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, ActnList, Menus, uTypes;
+  ShareMem, Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, ActnList, Menus, uTypes ;
 
 type
   TfmMain = class(TForm)
@@ -41,7 +41,6 @@ type
   private
     { Private declarations }
     procedure ScanLibraries;
-    procedure LoadLibrariesToList;
   public
     { Public declarations }
     LAST_ERROR : integer;
@@ -53,9 +52,7 @@ var
   fmMain: TfmMain;
   ROOT_DIR : string = '';
   EXE_FILE_NAME : string = '';
-
-  DllLibraries : array[0..15] of TDllInfoStructure;
-
+  LibraryList : array of TLibrary;
 Const
   LIBRARIES_DIR = '\libraries\';
 
@@ -100,6 +97,7 @@ begin
   ROOT_DIR:= ExtractFileDir(ParamStr(0));
   EXE_FILE_NAME:= ExtractFileName(ParamStr(0));
   LAST_ERROR := 0;
+  SetLength(LibraryList,0);
 
    // Init application
   TrayIcon.Visible:= true;
@@ -109,24 +107,13 @@ begin
        ShowErrorMessage;
        exit;
      End;
-  LoadLibrariesToList;
-end;
-
-procedure TfmMain.LoadLibrariesToList;
-Var
-  i: integer;
-begin
-   // Load all libraries to list
-  for i := 0 to Length(DllLibraries) do
-      Begin
-        if DllLibraries[i].DllFilePath = '' then Continue;
-      End;
 end;
 
 procedure TfmMain.ScanLibraries;
 Var
   SearchRec: TSearchRec;
-  index: integer;
+  DllLibrary: TLibrary;
+  IsValid: boolean;
 begin
    // Scan libraries directory, find all DLL and fill array of libraries
   if not DirectoryExists(ROOT_DIR  + LIBRARIES_DIR) then
@@ -137,25 +124,21 @@ begin
 
   if FindFirst(ROOT_DIR  + LIBRARIES_DIR + '*.dll', faAnyFile, SearchRec) = 0 then
      Begin
-       index:= 0;
        repeat
         if (SearchRec.name = '.') or (SearchRec.name = '..') then continue;
         if (SearchRec.Attr and faDirectory) = 0 then
             Begin
-              DllLibraries[index].DllName:= SearchRec.Name;
-              DllLibraries[index].DllFilePath:= ROOT_DIR + LIBRARIES_DIR + SearchRec.Name;
-              Inc(index);
+              DllLibrary:= TLibrary.Create(ROOT_DIR  + LIBRARIES_DIR + SearchRec.Name,IsValid);
+              if IsValid then
+                 Begin
+                   SetLength(LibraryList,Length(LibraryList)+1);
+                   LibraryList[Length(LibraryList)-1]:= DllLibrary;
+                   lbListOfDll.Items.Add(DllLibrary.DllName);
+                 End;
             End;
        until FindNext(SearchRec) <> 0;
      End;
   FindClose(SearchRec);
-
-  if Length(DllLibraries) = 0 then
-     Begin
-       LAST_ERROR:= ERROR_LIBRARIES_EMPTY;
-       exit;
-     End;
-
   LAST_ERROR:= 0;
 end;
 
