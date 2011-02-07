@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{FA2E667A-B5E2-46C5-B263-AE7553D5EC6C}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Pomogu4ki.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="dll\blank\Lib.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="Pomogu4ki">
+			<MSBuild Projects="Pomogu4ki.dproj"/>
+		</Target>
+		<Target Name="Pomogu4ki:Clean">
+			<MSBuild Targets="Clean" Projects="Pomogu4ki.dproj"/>
+		</Target>
+		<Target Name="Pomogu4ki:Make">
+			<MSBuild Targets="Make" Projects="Pomogu4ki.dproj"/>
+		</Target>
+		<Target Name="Lib">
+			<MSBuild Projects="dll\blank\Lib.dproj"/>
+		</Target>
+		<Target Name="Lib:Clean">
+			<MSBuild Targets="Clean" Projects="dll\blank\Lib.dproj"/>
+		</Target>
+		<Target Name="Lib:Make">
+			<MSBuild Targets="Make" Projects="dll\blank\Lib.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="Pomogu4ki;Lib"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="Pomogu4ki:Clean;Lib:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="Pomogu4ki:Make;Lib:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
