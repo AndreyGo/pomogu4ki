@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2011.02.04 17:23:11.906.dproj,C:\Documents and Settings\Admin\Мои документы\RAD Studio\Projects\Project2.dproj=C:\Documents and Settings\Admin\Мои документы\RAD Studio\libraries\Lib.dproj</Transaction>
+    <Transaction>2011.02.08 12:09:57.828.pas,C:\Documents and Settings\Admin\Мои документы\RAD Studio\pomogu4ki\dll\blank\Unit1.pas=C:\Documents and Settings\Admin\Мои документы\RAD Studio\pomogu4ki\dll\blank\uSettings.pas</Transaction>
+    <Transaction>2011.02.08 12:09:57.828.dfm,C:\Documents and Settings\Admin\Мои документы\RAD Studio\pomogu4ki\dll\blank\Unit1.dfm=C:\Documents and Settings\Admin\Мои документы\RAD Studio\pomogu4ki\dll\blank\uSettings.dfm</Transaction>
+    <Transaction>2011.02.08 17:51:09.640.ico,C:\Documents and Settings\Admin\Мои документы\RAD Studio\pomogu4ki\ico\Dashboard .ico=</Transaction>
+    <Transaction>2011.02.08 17:51:09.796.ico,C:\Documents and Settings\Admin\Мои документы\RAD Studio\pomogu4ki\ico\Desktop.ico=</Transaction>
+    <Transaction>2011.02.08 17:55:11.187.ico,C:\Documents and Settings\Admin\Мои документы\RAD Studio\pomogu4ki\ico\Documents.ico=</Transaction>
+    <Transaction>2011.02.08 17:55:11.203.ico,C:\Documents and Settings\Admin\Мои документы\RAD Studio\pomogu4ki\ico\CD.ico=</Transaction>
+    <Transaction>2011.02.08 17:55:11.203.ico,C:\Documents and Settings\Admin\Мои документы\RAD Studio\pomogu4ki\ico\Airport .ico=</Transaction>
+    <Transaction>2011.02.08 17:55:11.203.ico,C:\Documents and Settings\Admin\Мои документы\RAD Studio\pomogu4ki\ico\Camera.ico=</Transaction>
+  </Transactions>
+</BorlandProject>

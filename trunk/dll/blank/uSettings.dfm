@@ -1,0 +1,135 @@
+object fmSettings: TfmSettings
+  Left = 0
+  Top = 0
+  BorderStyle = bsToolWindow
+  Caption = 'Settings'
+  ClientHeight = 350
+  ClientWidth = 539
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnBottom: TPanel
+    Left = 0
+    Top = 313
+    Width = 539
+    Height = 37
+    Align = alBottom
+    BevelInner = bvLowered
+    TabOrder = 0
+    ExplicitTop = 300
+    ExplicitWidth = 457
+    object btnOk: TButton
+      Left = 286
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'Ok'
+      Default = True
+      TabOrder = 0
+    end
+    object btnApply: TButton
+      Left = 366
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'Apply'
+      TabOrder = 1
+    end
+    object btnCancel: TButton
+      Left = 456
+      Top = 6
+      Width = 75
+      Height = 25
+      Cancel = True
+      Caption = 'Cancel'
+      TabOrder = 2
+      OnClick = btnCancelClick
+    end
+    object btnHelp: TButton
+      Left = 7
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'Help'
+      TabOrder = 3
+    end
+  end
+  object pnLeft: TPanel
+    Left = 0
+    Top = 0
+    Width = 121
+    Height = 313
+    Align = alLeft
+    BevelInner = bvLowered
+    TabOrder = 1
+    ExplicitHeight = 300
+    object tvNavigate: TTreeView
+      Left = 2
+      Top = 2
+      Width = 117
+      Height = 309
+      Align = alClient
+      BevelInner = bvNone
+      BevelOuter = bvSpace
+      BorderStyle = bsNone
+      HideSelection = False
+      Indent = 19
+      ReadOnly = True
+      TabOrder = 0
+      OnChange = tvNavigateChange
+      ExplicitLeft = 1
+      ExplicitTop = 1
+      ExplicitWidth = 103
+      ExplicitHeight = 298
+    end
+  end
+  object pcSettings: TPageControl
+    Left = 121
+    Top = 0
+    Width = 418
+    Height = 313
+    ParentCustomHint = False
+    ActivePage = tsMain
+    Align = alClient
+    BiDiMode = bdLeftToRight
+    DoubleBuffered = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentBiDiMode = False
+    ParentDoubleBuffered = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 2
+    ExplicitLeft = 1
+    ExplicitTop = 1
+    ExplicitWidth = 350
+    ExplicitHeight = 298
+    object tsMain: TTabSheet
+      Caption = #1054#1089#1085#1086#1074#1085#1099#1077
+      ExplicitWidth = 342
+      ExplicitHeight = 270
+    end
+    object tsAdditional: TTabSheet
+      Caption = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086
+      ImageIndex = 1
+      ExplicitWidth = 328
+      ExplicitHeight = 272
+    end
+  end
+  object acSettings: TActionList
+    Left = 24
+    Top = 24
+  end
+end
